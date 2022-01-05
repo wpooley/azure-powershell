@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Updated Powershell example for custom password generation for `New-AzADAppCredential`
 
 ## Version 5.2.0
 * Fixed incorrect alias for `Get-AzADSpCredential` [#16592]
