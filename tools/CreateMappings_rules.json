@@ -712,7 +712,7 @@
     "module": "EdgeOrder"
   },
   {
-    "alias": "LabService",
-    "module": "LabService"
+    "alias": "Lab Services",
+    "module": "LabServices"
   }
 ]
