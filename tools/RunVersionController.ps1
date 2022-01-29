@@ -371,7 +371,7 @@ switch ($PSCmdlet.ParameterSetName)
         {
             if(!$SkipAzInstall.IsPresent)
             {
-                Install-Module Az -Repository $GalleryName -Force -AllowClobber
+                Install-Module Az -Repository $GalleryName -Force -AllowClobber -SkipPublisherCheck
             }
         }
         catch
