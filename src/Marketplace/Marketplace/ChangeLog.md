@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.1
 * Added new cmdlets:
  - `Copy-AzMarketplacePrivateStoreCollectionOffer`
  - `Get-AzMarketplaceBillingPrivateStoreAccount`

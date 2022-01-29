@@ -710,5 +710,9 @@
   {
     "alias": "EdgeOrder",
     "module": "EdgeOrder"
+  },
+  {
+    "alias": "LabService",
+    "module": "LabService"
   }
 ]

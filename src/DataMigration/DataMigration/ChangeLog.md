@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.5
 * Added cmdlets:
  - `Get-AzDataMigrationAssessment`
  - `Get-AzDataMigrationSqlService`
