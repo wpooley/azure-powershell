@@ -769,6 +769,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiVersionDescription,
             string apiVersionSetId,
             string apiVersion,
+            string apiType,
             PsApiManagementSchema[] urlSchema,
             string authorizationServerId,
             string authorizationScope,
@@ -782,6 +783,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 DisplayName = name,
                 Description = description,
                 ServiceUrl = serviceUrl,
+                ApiType = apiType,
                 Path = urlSuffix,
                 Protocols = Mapper.Map<IList<Protocol?>>(urlSchema),
             };
