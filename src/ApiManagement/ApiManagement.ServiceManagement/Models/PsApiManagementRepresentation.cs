@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     {
         public string ContentType { get; set; }
 
-        public string Sample { get; set; }
+        public string Examples { get; set; }
         
         public PsApiManagementParameter[] FormParameters { get; set; }
                 
