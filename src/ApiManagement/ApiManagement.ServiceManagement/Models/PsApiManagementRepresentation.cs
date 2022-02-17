@@ -20,8 +20,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     {
         public string ContentType { get; set; }
 
-        public string Sample { get; set; }
-        
+        //TODO Map To Example
+        //public string Sample { get; set; }
+
         public PsApiManagementParameter[] FormParameters { get; set; }
                 
         public string SchemaId { get; set; }

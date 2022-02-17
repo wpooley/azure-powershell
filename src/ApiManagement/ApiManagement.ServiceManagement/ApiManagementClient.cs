@@ -100,7 +100,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                     .CreateMap<PsApiManagementRepresentation, RepresentationContract>()
                     .ForMember(dest => dest.ContentType, opt => opt.MapFrom(src => src.ContentType))
-                    .ForMember(dest => dest.Sample, opt => opt.MapFrom(src => src.Sample))
+                    //TODO Map To Example
+                    //.ForMember(dest => dest.Sample, opt => opt.MapFrom(src => src.Sample))
                     .ForMember(dest => dest.FormParameters, opt => opt.Ignore())
                     .ForMember(dest => dest.SchemaId, opt => opt.MapFrom(src => src.SchemaId))
                     .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.TypeName))
@@ -205,7 +206,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                    .CreateMap<RepresentationContract, PsApiManagementRepresentation>()
                    .ForMember(dest => dest.ContentType, opt => opt.MapFrom(src => src.ContentType))
-                   .ForMember(dest => dest.Sample, opt => opt.MapFrom(src => src.Sample))
+                   //TODO Map To Example
+                   //.ForMember(dest => dest.Sample, opt => opt.MapFrom(src => src.Sample))
                    .ForMember(dest => dest.FormParameters, opt => opt.Ignore())
                    .ForMember(dest => dest.SchemaId, opt => opt.MapFrom(src => src.SchemaId))
                    .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.TypeName))
@@ -783,7 +785,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 Description = description,
                 ServiceUrl = serviceUrl,
                 Path = urlSuffix,
-                Protocols = Mapper.Map<IList<Protocol?>>(urlSchema),
+                Protocols = Mapper.Map<IList<string>>(urlSchema),
             };
 
             if (!string.IsNullOrWhiteSpace(authorizationServerId))
@@ -922,7 +924,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (urlSchema != null)
             {
                 urlSchema = urlSchema.Distinct().ToArray();
-                api.Protocols = Mapper.Map<IList<Protocol?>>(urlSchema);
+                api.Protocols = Mapper.Map<IList<string>>(urlSchema);
             }
 
             if (subscriptionRequired)
@@ -1008,7 +1010,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             if (protocols != null)
             {
-                apiCreateOrUpdateParams.Protocols = Mapper.Map<IList<Protocol?>>(protocols);
+                apiCreateOrUpdateParams.Protocols = Mapper.Map<IList<string>>(protocols);
             }
 
             if (!string.IsNullOrEmpty(serviceUrl))
@@ -1070,7 +1072,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             if (protocols != null)
             {
-                createOrUpdateContract.Protocols = Mapper.Map<IList<Protocol?>>(protocols);
+                createOrUpdateContract.Protocols = Mapper.Map<IList<string>>(protocols);
             }
 
             if (!string.IsNullOrEmpty(serviceUrl))
