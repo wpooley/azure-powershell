@@ -100,7 +100,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                     .CreateMap<PsApiManagementRepresentation, RepresentationContract>()
                     .ForMember(dest => dest.ContentType, opt => opt.MapFrom(src => src.ContentType))
-                    .ForMember(dest => dest.Examples, opt => opt.MapFrom(src => src.Examples))
+                    // TODO Map this
+                    //.ForMember(dest => dest.Examples, opt => opt.MapFrom(src => src.Examples))
                     .ForMember(dest => dest.FormParameters, opt => opt.Ignore())
                     .ForMember(dest => dest.SchemaId, opt => opt.MapFrom(src => src.SchemaId))
                     .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.TypeName))
@@ -205,7 +206,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                    .CreateMap<RepresentationContract, PsApiManagementRepresentation>()
                    .ForMember(dest => dest.ContentType, opt => opt.MapFrom(src => src.ContentType))
-                   .ForMember(dest => dest.Examples, opt => opt.MapFrom(src => src.Examples))
+                   // TODO Map this
+                   //.ForMember(dest => dest.Examples, opt => opt.MapFrom(src => src.Examples))
                    .ForMember(dest => dest.FormParameters, opt => opt.Ignore())
                    .ForMember(dest => dest.SchemaId, opt => opt.MapFrom(src => src.SchemaId))
                    .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.TypeName))
@@ -769,6 +771,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiVersionDescription,
             string apiVersionSetId,
             string apiVersion,
+            string apiType,
             PsApiManagementSchema[] urlSchema,
             string authorizationServerId,
             string authorizationScope,
@@ -783,9 +786,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 Description = description,
                 ServiceUrl = serviceUrl,
                 Path = urlSuffix,
-                Protocols = Mapper.Map<IList<string>>(urlSchema),
+                Protocols = Mapper.Map<IList<string>>(urlSchema)
             };
-
+            if (!string.IsNullOrWhiteSpace(apiType))
+            {
+                api.ApiType = apiType;
+            }
             if (!string.IsNullOrWhiteSpace(authorizationServerId))
             {
                 api.AuthenticationSettings = new AuthenticationSettingsContract
