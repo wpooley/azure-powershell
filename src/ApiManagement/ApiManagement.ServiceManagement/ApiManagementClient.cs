@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiVersionDescription,
             string apiVersionSetId,
             string apiVersion,
-            string apiType,
+            PsApiManagementApiType? apiType,
             PsApiManagementSchema[] urlSchema,
             string authorizationServerId,
             string authorizationScope,
@@ -852,10 +852,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 Path = urlSuffix,
                 Protocols = Mapper.Map<IList<string>>(urlSchema)
             };
-            if (!string.IsNullOrWhiteSpace(apiType))
-            {
-                api.ApiType = apiType;
-            }
+
             if (!string.IsNullOrWhiteSpace(authorizationServerId))
             {
                 api.AuthenticationSettings = new AuthenticationSettingsContract
@@ -916,9 +913,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 api.ApiVersion = apiVersion;
             }
 
-            if (!string.IsNullOrWhiteSpace(apiType))
+            if (apiType == null)
             {
-                api.ApiType = apiType;
+                api.ApiType = PsApiManagementApiType.Http.ToString();
+            }
+            if (apiType != null)
+            {
+                api.ApiType = apiType.ToString();
             }
 
             if (!string.IsNullOrWhiteSpace(termsOfServiceUrl))
@@ -978,8 +979,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string subscriptionKeyQueryParamName,
             string openIdProviderId,
             string[] bearerTokenSendingMethods,
-            PsApiManagementApi apiObject, 
-            string apiType,
+            PsApiManagementApi apiObject,
+            PsApiManagementApiType? apiType,
             string termsOfServiceUrl,
             string contactName,
             string contactUrl,
@@ -1070,9 +1071,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 };
             }
 
-            if (!string.IsNullOrEmpty(apiType))
+            if (apiType == null)
             {
-                api.ApiType = apiType;
+                api.ApiType = PsApiManagementApiType.Http.ToString();
+            }
+            if (apiType != null)
+            {
+                api.ApiType = apiType.ToString();
             }
 
             if (!string.IsNullOrWhiteSpace(termsOfServiceUrl))

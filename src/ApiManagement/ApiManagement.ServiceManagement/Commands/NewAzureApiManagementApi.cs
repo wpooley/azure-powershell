@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Api Version of the Api to create. This parameter is optional.")]        
+            HelpMessage = "Api Version of the Api to create. This parameter is optional.")]
         public String ApiVersion { get; set; }
 
         [Parameter(
@@ -158,8 +158,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Type of API to create. This parameter is optional.")]
-        public String ApiType { get; set; }
+            HelpMessage = "Type of API to create (http, soap, websocket, graphql). This parameter is optional.")]
+        public PsApiManagementApiType? ApiType { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

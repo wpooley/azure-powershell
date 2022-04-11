@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Web API protocols (http, https). Protocols over which API is made available." +
-                          " This parameter is optional. Default value is $null.")]
+            HelpMessage = "Web API protocols (http, https, ws, wss). Protocols over which API is made available. " +
+                          "This parameter is required. Default value is $null.")]
         public PsApiManagementSchema[] Protocols { get; set; }
 
         [Parameter(
@@ -148,8 +148,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Type of API to create. This parameter is optional.")]
-        public String ApiType { get; set; }
+            HelpMessage = "Type of API to create (http, soap, websocket, graphql). This parameter is optional.")]
+        public PsApiManagementApiType? ApiType { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
